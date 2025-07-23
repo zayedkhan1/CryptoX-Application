@@ -13,7 +13,7 @@ import CoinContextProvider from './Context/CoinContext.jsx';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <CoinContextProvider>
-        <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </CoinContextProvider>
   </StrictMode>,
 )
