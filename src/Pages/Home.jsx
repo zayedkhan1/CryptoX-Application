@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { FaBitcoin } from 'react-icons/fa';
 import { CoinContext } from '../Context/CoinContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
@@ -29,6 +30,11 @@ const Home = () => {
   useEffect(()=>{
          setDisplayCoin(allCoin);
   },[allCoin])
+
+  const navigate=useNavigate();
+  const handleCoin=(id)=>{
+    navigate(`/coin/${id}`)
+  }
 
     return (
         <div className='bg-amber-900'>
@@ -81,25 +87,28 @@ const Home = () => {
               <th className="py-3 px-2 text-left">Coins</th>
               <th className="py-3 px-2 text-left">Price</th>
               <th className="py-3 px-2 text-left">24H Change</th>
-              <th className="py-3 px-2 text-left">Market Cap</th>
+              <th className=" hidden md:table-cell py-3 px-2 text-left">Market Cap</th>
             </tr>
           </thead>
           <tbody>
       {
         displayCoin.slice(0,10).map((itme,idx)=>(
             
+       
             <tr key={idx} className="bg-indigo-800 border-t border-indigo-700 hover:bg-indigo-700 transition">
               <td className="py-3 px-2">{itme.market_cap_rank}</td>
-              <td className="py-3 px-2 flex items-center gap-2">
-                {/* <FaBitcoin className="text-orange-500 text-lg" /> */}
+             <td onClick={()=>{handleCoin(itme.id)}} className='cursor-pointer' >
+              <p className="py-3 px-2 flex items-center gap-2">
                 <img className='w-[35px]' src={itme.image} alt="" />
                 <span>{itme.name +"-"+ itme.symbol}</span>
-              </td>
+              </p>
+             </td>
               <td className="py-3 px-2">{currency.symbol} {itme.current_price.toLocaleString()} </td>
               <td className={
                 itme.price_change_percentage_24h> 0?'text-green-400 py-3 px-2 ':'text-red-400  py-3 px-2 '    }> {Math.floor(itme.price_change_percentage_24h)/100}</td>
-              <td className="py-3 px-2">{currency.symbol} {itme.market_cap.toLocaleString()}</td>
+              <td className=" hidden md:table-cell  py-3 px-2">{currency.symbol} {itme.market_cap.toLocaleString()}</td>
             </tr>
+  
             
         ))
       }

@@ -41,7 +41,7 @@ const Navbar = () => {
           <nav className="w-full bg-sky-300   top-0 left-0 z-50 shadow-lg">
       <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-3 gap-4 md:gap-2 text-center md:text-left ${menuOpen ? 'space-y-4' : ''}`}>
         {/* Logo */}
-        <a href="#" className="text-xl font-bold flex-shrink-0">
+        <a href="/" className="text-xl font-bold flex-shrink-0">
           <img src={logo} alt="Logo" className="mx-auto md:mx-0  h-auto" />
         </a>
 
