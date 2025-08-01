@@ -1,2 +1,2 @@
  Project Live Link : https://cryptoplace-x.netlify.app/
-*Details comming soon
+# Details comming soon
